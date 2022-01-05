@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-
 export default function Textareas(props) {
+  let boldStyle, italicStyle, underlineStyle, Text_style,preview_style;
   const handleUpclick = () => {
     setText(text.toUpperCase());
   };
@@ -22,48 +22,71 @@ export default function Textareas(props) {
     });
     setText(capital_eachWord.join(" "));
   };
-  const handleToggleclick = () => {
-    var temp = text.toUpperCase();
-    var words = temp.split(" ");
-    var capital_eachWord = [];
-    words.forEach((element) => {
-      capital_eachWord.push(
-        element[0].toLowerCase() + element.slice(1, element.length)
-      );
-    });
-    setText(capital_eachWord.join(" "));
+  const handleRemoveSpacesclick = () => {
+    let t = text.split(/[ ]+/);
+    setText(t.join(" "));
   };
   const handleBoldTextclick = () => {
     bold ? setBold(false) : setBold(true);
-    console.log(bold);
-    // setText(text.style.fontWeight.bold)
   };
   const handleItalicTextclick = () => {
     italic ? setItalic(false) : setItalic(true);
-    console.log(italic);
   };
 
   const handleUnderlineTextclick = () => {
     underline ? setUnderline(false) : setUnderline(true);
   };
+
+ 
   const handleClearclick = () => {
     setText("");
   };
 
+  //Here States are defined
   const [text, setText] = useState("");
   const [bold, setBold] = useState(false);
   const [italic, setItalic] = useState(false);
   const [underline, setUnderline] = useState(false);
+  
+
+
+ 
+
+
+  //Bold Intalic Underline Button Style chnaged
+
+  boldStyle = { backgroundColor: bold ? "Green" : "gray" };
+  underlineStyle = { backgroundColor: underline ? "teal" : "gray" };
+  italicStyle = { backgroundColor: italic ? "orange" : "gray" };
+  //TextStyle Define Here
+  Text_style = {
+    textAlign: "justify",
+    backgroundColor: props.conclr,
+    color: props.txtclr,
+    fontWeight: bold ? "Bold" : "normal",
+    fontStyle: italic ? "italic" : "normal",
+    textDecoration: underline ? "underline" : "initial",
+  };
+  preview_style={
+    textAlign: "justify",
+    color: props.txtclr,
+    // backgroundColor: theme==="Light" ? "#242521":"White",
+    // color: theme==="Light" ? "white":"#242521",
+    fontWeight: bold ? "Bold" : "normal",
+    fontStyle: italic ? "italic" : "normal",
+    textDecoration: underline ? "underline" : "initial",
+  }
   return (
     <>
       <div className="container my-4">
         <div className="mb-3">
-          <label className="form-label">{props.title}</label>
+          <label className="form-label" style={{color:`${props.txtclr}`,fontSize:'25px'}}>{props.title}</label>
           <br />
+
           <button
             type="button"
             className="btn mx-2"
-            style={{ backgroundColor: bold ? "Green" : "gray" }}
+            style={boldStyle}
             onClick={handleBoldTextclick}
           >
             <b> B</b>
@@ -72,31 +95,30 @@ export default function Textareas(props) {
           <button
             type="button"
             className="btn mx-1"
-            style={{ backgroundColor: italic ? "orange" : "gray" }}
+            style={italicStyle}
             onClick={handleItalicTextclick}
           >
             <i>I</i>
           </button>
+
           <button
             type="button"
             className="btn mx-1"
-            style={{ backgroundColor: underline ? "teal" : "gray" }}
+            style={underlineStyle}
             onClick={handleUnderlineTextclick}
           >
             <u>U</u>
           </button>
+          
+        
+
           <textarea
             className="form-control my-3"
             id="exampleFormControlTextarea1"
             rows="7"
             value={text}
             placeholder="Enter Text To Edit"
-            style={{
-              textAlign: "justify",
-              fontWeight: bold ? "Bold" : "normal",
-              fontStyle: italic ? "italic" : "normal",
-              textDecoration: underline ? "underline" : "initial",
-            }}
+            style={Text_style}
             onChange={onHandleChanged}
           ></textarea>
         </div>
@@ -124,9 +146,9 @@ export default function Textareas(props) {
         <button
           type="button"
           className="btn btn-warning mx-1"
-          onClick={handleToggleclick}
+          onClick={handleRemoveSpacesclick}
         >
-          Toggle Case
+          Remove Extra Spaces
         </button>
         <button
           type="button"
@@ -137,27 +159,19 @@ export default function Textareas(props) {
         </button>
 
         <div className="container my-4">
-          <h6>
+          <h6 style={{color:`${props.txtclr}`}}>
             Total No of Words {text.length !== 0 ? text.split(" ").length : 0}
           </h6>
-          <h6>
+          <h6 style={{color:`${props.txtclr}`}}>
             Total No of characters{" "}
-            {text.length !== 0 ? text.length - text.split(" ").length +1: 0}
+            {text.length !== 0 ? text.length - text.split(" ").length + 1 : 0}
           </h6>
         </div>
         <div className="container">
-          <h4>Text Preview : </h4>
+          <h4 style={{color:`${props.txtclr}`}}>Text Preview : </h4>
         </div>
 
-        <div
-          className="container"
-          style={{
-            textAlign: "justify",
-            fontWeight: bold ? "bold" : "normal",
-            fontStyle: italic ? "italic" : "normal",
-            textDecoration: underline ? "underline" : "initial",
-          }}
-        >
+        <div className="container" style={preview_style}>
           {text === "Enter Text To Edit" ? "" : text}
         </div>
       </div>

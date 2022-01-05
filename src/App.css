@@ -3,7 +3,7 @@
 }
 
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -12,81 +12,47 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 
-.createBorder{
+/* .createBorder{
   margin-left: 3cm;
   margin-top: 1cm;
-}
-
-.heading{
-  color: rgb(37, 143, 111);
-  align-self: center;
-  margin-right: 50px;
-  text-align: center;
-  /* text-decoration: underline; */
-  font-size:6mm;
-}
+} */
 
 
-.form-control{
+
+/* .form-control{
   border-color: green;
   text-align: left;
-}
+} */
 
-.form-label{
-  color: cornflowerblue;
-  font-size: 20px;
-  background-color: whitesmoke;
-}
 
-.submit-button{
-  margin-left: 5cm;
-  /* background-color: teal; */
-}
 
-.resut-part{
-  margin-left: 5cm;
-}
 
-.my-container{
-  border-width:  1px;
-  
-  /* border-radius: 20px; */
-  /* border-color: darkslateblue; */
-  /* border-style:  inset; */
-  padding-right: 15px;
-  padding-top: 15px;
-  padding-bottom: 10px;
-  /* height: 12cm; */
-  width: 20cm;
-  /* text-align: left; */
-  /* margin-left: 9cm; */
-}
 
-.student-details{
+/* .student-details{
   margin-left:  0.7cm;
   padding-bottom: 10px;
   color: rgb(165, 10, 87);
   font-size: 18px;
-  /* margin-top: 1cm; */
-}
 
-.std-details{
+} */
+
+/* .std-details{
   margin-left:  0.7cm;
   padding-bottom: 5px;
   color: rgb(5, 50, 102);
@@ -95,26 +61,18 @@
 
 .std-label{
   padding-right: 5cm;
-}
+} */
 
 
-.form-floating{
+/* .form-floating{
   margin-bottom: 7px;
   margin-right: 7cm;
 
-}
+} */
 
-.mycon{
-  /* background-color: rgb(235, 223, 209); */
-  border-radius: 29px;
-  /* padding-left: 20px */
-  margin-left: 4.3cm;
-  padding-left: 4.5cm;
-  margin-right: 6cm;
-  /* padding-right: 6cm; */
-}
 
-.sem-marks-container{
+
+/* .sem-marks-container{
   margin-left: 30px;
   margin-top: 10px;
-}
+} */
