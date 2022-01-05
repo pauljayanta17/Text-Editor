@@ -4,14 +4,23 @@ export default function Textareas(props) {
   let boldStyle, italicStyle, underlineStyle, Text_style,preview_style;
   const handleUpclick = () => {
     setText(text.toUpperCase());
+    text.length===0?
+    props.showAlert("Enter Text To Convert","danger"):
+    props.showAlert("Converted To UpperCase","success")
   };
   const onHandleChanged = (event) => {
     setText(event.target.value);
   };
   const handleLowclick = () => {
     setText(text.toLowerCase());
+    text.length===0?
+    props.showAlert("Enter Text To Convert","danger"):
+    props.showAlert("Converted To LowerCase","success")
   };
   const handleCapitalEachclick = () => {
+    text.length===0?
+    props.showAlert("Enter Text To Convert","danger"):
+    props.showAlert("Converted To capitalize each word","success")
     var temp = text.toLowerCase();
     var words = temp.split(" ");
     var capital_eachWord = [];
@@ -21,8 +30,12 @@ export default function Textareas(props) {
       );
     });
     setText(capital_eachWord.join(" "));
+   
   };
   const handleRemoveSpacesclick = () => {
+    text.length===0?
+    props.showAlert("Enter Text To Convert","danger"):
+    props.showAlert("Remove Extra Spaces","success")
     let t = text.split(/[ ]+/);
     setText(t.join(" "));
   };
@@ -39,6 +52,9 @@ export default function Textareas(props) {
 
  
   const handleClearclick = () => {
+    text.length>0?
+    props.showAlert("Text Clear","success"):
+    props.showAlert("Nothing to clear","danger")
     setText("");
   };
 
@@ -55,9 +71,9 @@ export default function Textareas(props) {
 
   //Bold Intalic Underline Button Style chnaged
 
-  boldStyle = { backgroundColor: bold ? "Green" : "gray" };
-  underlineStyle = { backgroundColor: underline ? "teal" : "gray" };
-  italicStyle = { backgroundColor: italic ? "orange" : "gray" };
+  boldStyle = { backgroundColor: bold ? "Green" : "white" };
+  underlineStyle = { backgroundColor: underline ? "teal" : "white" };
+  italicStyle = { backgroundColor: italic ? "orange" : "white" };
   //TextStyle Define Here
   Text_style = {
     textAlign: "justify",
