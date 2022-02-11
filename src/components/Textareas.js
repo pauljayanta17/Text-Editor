@@ -26,20 +26,6 @@ export default function Textareas(props) {
     props.showAlert("Enter Text To Convert","danger"):
     props.showAlert("Converted To LowerCase","success")
   };
-  const handleCapitalEachclick = () => {
-    text.length===0?
-    props.showAlert("Enter Text To Convert","danger"):
-    props.showAlert("Converted To capitalize each word","success")
-    var temp = text.toLowerCase();
-    var words = temp.split(" ");
-    var capital_eachWord = [];
-    words.forEach((element) => {
-      capital_eachWord.push(
-        element[0].toUpperCase() + element.slice(1, element.length)
-      );
-    });
-    setText(capital_eachWord.join(" "));
-  };
 
   const handleRemoveSpacesclick = () => {
     text.length===0?
@@ -48,6 +34,26 @@ export default function Textareas(props) {
     let t = text.split(/[ ]+/);
     setText(t.join(" "));
   };
+
+
+  const handleCapitalEachclick = () => {
+    text.length===0?
+    props.showAlert("Enter Text To Convert","danger"):
+    props.showAlert("Converted To capitalize each word","success")
+    console.log(text)
+    var temp = text.toLowerCase();
+    var words = temp.split(" ");
+    var capital_eachWord = [];
+    console.log(words)
+    words.forEach((element) => {
+      if( element!=="")
+      capital_eachWord.push(
+        element[0].toUpperCase() + element.slice(1, element.length)
+      );
+    });
+    setText(capital_eachWord.join(" "));
+  };
+
   const handleBoldTextclick = () => {
     if(text!=="")
     bold ? setBold(false) : setBold(true);
