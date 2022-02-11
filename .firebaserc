@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "reactprojects-55ab1"
+  },
+  "targets": {
+    "reactprojects-55ab1": {
+      "hosting": {
+        "tr": [
+          "mytextanalyzer"
+        ]
+      }
+    }
+  }
+}
