@@ -1,14 +1,14 @@
 import "./App.css";
-// import Navbar from './components/Navbar';
+// import Navbar from 'thisismyweb./components/Navbar';
 import Textareas from "./components/Textareas";
 import DarkMode from "./components/DarkMode";
-import Alert from "./components/Alert";
+import Alert from "./components/EAlert";
 import React, { useState } from "react";
 function App() {
   //change theme in body
   const handleThemeChange = () => {
     console.log("working");
-    // If theme false then light else dark
+    // If theme false then thisismyweb light else dark
     theme === "Light" ? setTheme("Dark") : setTheme("Light");
     if(theme==="Light"){
       document.getElementById("bodyID").style.background = "white"
@@ -26,7 +26,7 @@ function App() {
     }
   };
 
-  //theme end here
+  //theme thisismyweb end here
 
   //Show Alert Message function
     const showAlert = (message,type)=>{
@@ -46,11 +46,11 @@ function App() {
   return (
     <>
     <Alert alert={alert}/>
-      <div className="container">
+      <div className="container my-3">
         <DarkMode name={theme} onChange={handleThemeChange} />
       </div>
      
-      <Textareas title="Text Editing" txtclr={textColor} conclr={containerColor} showAlert={showAlert}/>
+      <Textareas title="Text Analyzing" txtclr={textColor} conclr={containerColor} showAlert={showAlert}/>
 
   
     </>

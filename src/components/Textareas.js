@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+// thisismyweb
 export default function Textareas(props) {
   let boldStyle, italicStyle, underlineStyle, Text_style,preview_style;
   const handleUpclick = () => {
@@ -10,7 +11,15 @@ export default function Textareas(props) {
   };
   const onHandleChanged = (event) => {
     setText(event.target.value);
+    settotalWords(countWords(text))
   };
+  const countWords=(str)=>{
+    str = str.replace(/(^\s*)|(\s*$)/gi,"");
+    str = str.replace(/[ ]{2,}/gi," ");
+    str = str.replace(/\n /,"\n");
+    return str.split(' ').length;
+    }
+    // thisismyweb
   const handleLowclick = () => {
     setText(text.toLowerCase());
     text.length===0?
@@ -30,8 +39,8 @@ export default function Textareas(props) {
       );
     });
     setText(capital_eachWord.join(" "));
-   
   };
+
   const handleRemoveSpacesclick = () => {
     text.length===0?
     props.showAlert("Enter Text To Convert","danger"):
@@ -40,14 +49,24 @@ export default function Textareas(props) {
     setText(t.join(" "));
   };
   const handleBoldTextclick = () => {
+    if(text!=="")
     bold ? setBold(false) : setBold(true);
+    else
+    props.showAlert("Text is empty","danger")
+
   };
   const handleItalicTextclick = () => {
-    italic ? setItalic(false) : setItalic(true);
+    if(text!=="")
+    italic ? setItalic(false) : setItalic(true); 
+    else
+    props.showAlert("Text is empty","danger")
   };
 
   const handleUnderlineTextclick = () => {
-    underline ? setUnderline(false) : setUnderline(true);
+    if(text!=="")
+    underline ? setUnderline(false) : setUnderline(true);  
+    else           
+    props.showAlert("Text is empty","danger")
   };
 
  
@@ -56,14 +75,28 @@ export default function Textareas(props) {
     props.showAlert("Text Clear","success"):
     props.showAlert("Nothing to clear","danger")
     setText("");
+    settotalWords(0)
   };
+
+  const handleCopyText=()=>{
+    if(text!==""){
+    let copytext = document.getElementById('exampleFormControlTextarea1')
+    copytext.select()
+    copytext.setSelectionRange(0,99999)
+    navigator.clipboard.writeText(copytext.value)
+    props.showAlert("Copy To Clipboard","success")
+    }
+    else{
+      props.showAlert("Text is empty","danger")
+    }
+  }
 
   //Here States are defined
   const [text, setText] = useState("");
   const [bold, setBold] = useState(false);
   const [italic, setItalic] = useState(false);
   const [underline, setUnderline] = useState(false);
-  
+  const [totalWords, settotalWords] = useState(0)
 
 
  
@@ -140,31 +173,38 @@ export default function Textareas(props) {
         </div>
         <button
           type="button"
-          className="btn btn-primary mx-1"
+          className="btn btn-primary mx-1 my-1"
           onClick={handleUpclick}
         >
           UpperCase
         </button>
         <button
           type="button"
-          className="btn btn-success mx-1"
+          className="btn btn-success mx-1 my-1"
           onClick={handleLowclick}
         >
           Lower Case
         </button>
         <button
           type="button"
-          className="btn btn-info mx-1"
+          className="btn btn-info mx-1 my-1"
           onClick={handleCapitalEachclick}
         >
           Capitalize Each Letter
         </button>
         <button
           type="button"
-          className="btn btn-warning mx-1"
+          className="btn btn-warning mx-1 my-1"
           onClick={handleRemoveSpacesclick}
         >
           Remove Extra Spaces
+        </button>
+        <button
+          type="button"
+          className="btn btn-primary mx-1"
+          onClick={handleCopyText}
+        >
+          Copy Text
         </button>
         <button
           type="button"
@@ -176,11 +216,11 @@ export default function Textareas(props) {
 
         <div className="container my-4">
           <h6 style={{color:`${props.txtclr}`}}>
-            Total No of Words {text.length !== 0 ? text.split(" ").length : 0}
+            Total No of Words {totalWords}
           </h6>
           <h6 style={{color:`${props.txtclr}`}}>
-            Total No of characters{" "}
-            {text.length !== 0 ? text.length - text.split(" ").length + 1 : 0}
+            Total No of characters {"  "}
+            {text.length !== 0 ? text.length - text.split("\n").length- text.split(" ").length + 1 : 0}
           </h6>
         </div>
         <div className="container">
